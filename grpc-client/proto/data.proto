@@ -1,1 +1,20 @@
+// 转换方式
+// 1. 在proto文件夹上右键点击Open In Terminal
+// 2. 运行protoc --go_out=plugins=grpc:. data.proto
 
+syntax = "proto3";
+package kgfamily.svc.kgadmin;
+
+service svgService {
+    rpc GetSvgCaptcha (GetSvgCaptchaReq) returns (GetSvgCaptchaRes) {
+    }
+}
+
+message GetSvgCaptchaReq {
+    string ip = 1;
+}
+
+message GetSvgCaptchaRes {
+    string token = 1;
+    string captcha = 2;
+}
