@@ -16,9 +16,7 @@ function createCaptcha(req, callback) {
         height: 35,
         charPreset: 'ABCDEFGHIJKLMNPQRSTUVWXYZ012346789'
     });
-    console.log(req);
     let ip = req.request.ip;
-    // let ip = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
     let time = (new Date()).getTime();
     const token = tokenUtil.create("&LYBr8DilX1Fq0&r", captcha.text, time);
     const elapsed = new Date() - beginTime;
