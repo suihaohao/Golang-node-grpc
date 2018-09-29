@@ -17,15 +17,12 @@ let packageDefinition = protoLoader.loadSync(
     });
 const svg_proto = grpc.loadPackageDefinition(packageDefinition).kgfamily.svc.kgadmin;
 
-function getServer() {
+function main() {
     console.log(`Starting svgCaptcha gRPC server on port ${PORT}...`);
     const server = new grpc.Server();
     server.addService(svg_proto.svgService.service, {GetSvgCaptcha: captcha.createCaptcha});
     server.bind('0.0.0.0:50053', grpc.ServerCredentials.createInsecure());
     server.start();
-}
-function main() {
-    getServer()
 }
 
 main();
