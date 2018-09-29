@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"context"
-	pb "go-frontend/proto"
+	pb "grpc-client/proto"
 )
 const (
 	
