@@ -8,9 +8,13 @@ import (
 	"context"
 	pb "go-frontend/proto"
 )
+const (
+	
+	address    = "localhost:50053"
+)
 
 func main() {
-	conn, err := grpc.Dial("localhost:50053", grpc.WithInsecure())
+	conn, err := grpc.Dial(address, grpc.WithInsecure())
 	if err != nil {
 		log.Errorf("did not connect: %v", err)
 	}
