@@ -1,0 +1,14 @@
+syntax = "proto3";
+package kgfamily.svc.kgadmin;
+
+service svgService {
+     rpc GetSvgCaptcha(GetSvgCaptchaReq) returns (GetSvgCaptchaRes) {}
+}
+message GetSvgCaptchaReq {
+    string ip = 1;
+}
+
+message GetSvgCaptchaRes {
+    string token = 1;
+    string captcha = 2;
+}
