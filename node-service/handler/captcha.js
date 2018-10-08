@@ -4,7 +4,7 @@
 
 const svgCaptcha = require('svg-captcha');
 const tokenUtil = require('./token');
-
+const secrets = "&LYBr8DilX1Fq0&r";
 function createCaptcha(req, callback) {
     const beginTime = new Date();
     let captcha = svgCaptcha.create({
@@ -18,7 +18,7 @@ function createCaptcha(req, callback) {
     });
     let ip = req.request.ip;
     let time = (new Date()).getTime();
-    const token = tokenUtil.create("&LYBr8DilX1Fq0&r", captcha.text, time);
+    const token = tokenUtil.create(secrets, captcha.text, time);
     const elapsed = new Date() - beginTime;
     callback(null, {
         token: token,
