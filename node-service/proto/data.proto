@@ -3,7 +3,9 @@ package kgfamily.svc.kgadmin;
 
 service svgService {
      rpc GetSvgCaptcha(GetSvgCaptchaReq) returns (GetSvgCaptchaRes) {}
+     rpc ParseSvgCaptcha(GetSvgCaptchaRes) returns (ParseSvgCaptchaReq){}
 }
+
 message GetSvgCaptchaReq {
     string ip = 1;
 }
@@ -11,4 +13,8 @@ message GetSvgCaptchaReq {
 message GetSvgCaptchaRes {
     string token = 1;
     string captcha = 2;
+}
+
+message ParseSvgCaptchaReq{
+    bool ok = 1;
 }
