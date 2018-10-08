@@ -26,4 +26,27 @@ function createCaptcha(req, callback) {
     })
 }
 
+function parseCaptcha(req, callback) {
+    console.log("parseCaptcha");
+    let info = tokenUtil.parse(secrets, req.request.token);
+    if (info.length !== 2){
+        callback(null, {ok: false});
+        return
+    }
+    if (req.request.captcha.toLowerCase() !== info[0].toLowerCase()){
+        callback(null, {ok: false});
+        return;
+    }
+    let tokenTime = new Date();
+    tokenTime.setTime(info[1]);
+    const timeDiff = Math.abs((new Date()).getTime() - tokenTime) / 1000; //秒
+    if (timeDiff > 60){
+        // 超过60秒失效
+        callback(null, {ok: false});
+        return;
+    }
+    callback(null, {ok: true});
+}
+
 module.exports.createCaptcha = createCaptcha;
+module.exports.parseCaptcha = parseCaptcha;
