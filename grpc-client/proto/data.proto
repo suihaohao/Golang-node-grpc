@@ -1,3 +1,15 @@
+//安装protoc-gen-go
+//	go get github.com/golang/protobuf/protoc-gen-go
+//	cd $goroot\pkg\mod\github.com\golang\protobuf@v1.4.2\protoc-gen-go
+//	go build
+//	go install
+//安装protoc
+//	https://github.com/protocolbuffers/protobuf/releases/tag/v3.12.3
+//	下载win64zip,解压后放到go的bin目录
+
+//在proto文件目录运行
+//	protoc  --go_out=plugins=grpc:. *.proto
+
 // 转换方式
 // 1. 在proto文件夹上右键点击Open In Terminal
 // 2. 运行protoc --go_out=plugins=grpc:. data.proto
